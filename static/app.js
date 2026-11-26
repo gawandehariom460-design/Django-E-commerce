@@ -1,0 +1,1 @@
+document.querySelectorAll(".product").forEach(card=>{card.addEventListener("click",event=>{if(event.target.tagName==="BUTTON")event.target.textContent="Added ✓"})});
