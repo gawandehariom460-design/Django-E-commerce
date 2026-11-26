@@ -106,13 +106,11 @@ def checkout():
             return redirect(url_for("home", view="cart"))
     order = Order(reference=token_hex(4).upper(), total=total)
     db.session.add(order)
+    db.session.flush()
     for row in rows:
         product = row["product"]
         product.stock -= row["quantity"]
         db.session.add(OrderLine(order_id=order.id, product_name=product.name, quantity=row["quantity"], unit_price=product.price))
-    db.session.flush()
-    for line in OrderLine.query.filter_by(order_id=order.id).all():
-        pass
     db.session.commit()
     session["cart"] = {}
     flash(f"Demo order {order.reference} received. No payment was taken.", "success")
