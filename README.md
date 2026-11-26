@@ -1,4 +1,4 @@
-# Django E-commerce
+# E-commerce Storefront (Flask)
 
 A learning storefront with product search, a session cart, and a demo checkout.
 
